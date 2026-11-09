@@ -1,0 +1,181 @@
+{
+  "version": "0.3",
+  "kind": "app",
+  "generatedAt": "2026-11-06T07:56:31.010Z",
+  "item": {
+    "title": "Station Availability Monitor",
+    "subtitle": "Find borough stations and review availability with response times"
+  },
+  "map": {
+    "type": "webmap",
+    "path": "./map.json"
+  },
+  "app": {
+    "template": "nova-app",
+    "preset": "analysis",
+    "showHeader": true,
+    "theme": {
+      "mode": "light",
+      "accent": "default",
+      "design": {
+        "schemaVersion": 1,
+        "id": "transportation-hazards",
+        "name": "Transportation & Hazards",
+        "source": {
+          "kind": "built-in"
+        },
+        "sourceSha256": "96f9cacb164efc2deef8667c7f359ef3249e1400406c265ad332465817465fc6",
+        "guidance": "# Transportation & Hazards\n\n## Overview\n\nFor people who run a network and keep it moving: road and transit operators, inspectors and hazard planners. The reader follows a corridor or a route and asks where the risk is, how far it reaches and what to do about it. The page borrows the clarity of road signs: direct, legible and practical, with the map as the primary reading surface.\n\n## Colors\n\nWarm neutral surfaces and a road-sign amber. In light mode the amber deepens so labels read on it; in dark mode it is bright against a near-black page, which suits a control-room setting. Amber marks the primary action, the selected feature and hazards that need attention. Keep it off large areas: wide amber fills would compete with the map's own road colors.\n\nSerious hazards use status colors, which outrank amber. Hazard levels on a chart use `colors`, and the same value keeps the same color across every block.\n\n## Typography\n\nA signage sans where the system has one, with a plain system sans in its place elsewhere. Numbers and short labels read at a glance, in compact body text with firm block titles. Say the place in every statement: \"Closed between exits 12 and 14\". Content a behavior draws inherits the page's font and size.\n\n## Layout\n\nSpacing is tight, so segments and events fit on one view. Put network-wide figures in the header, such as open closures and affected length. One side panel lists segments or events in order along the route or by severity, with details of the selected item below it. For comparing times of day or phases, a `steps` selector in the footer keeps the map in the center.\n\n## Elevation & Depth\n\nDepth comes from the step between background, surface and raised surface, with thin borders. Floating panels stay mostly opaque with a light blur, so road labels under them do not fight with panel text.\n\n## Shapes\n\nCorners are small and consistent, firm like a sign panel. Chips stay fully round so they read as chips.\n\n## Components\n\n- **KPI:** two to four network figures, each with its unit and its window, such as \"Closures today\".\n- **List:** a segment or event name with its location as the subtitle.\n- **Selector:** chips for hazard type or level; `steps` for an ordered sequence such as phases or hours.\n- **Chart:** sorted bars for ranking corridors or event types.\n- **Trend:** events by hour or day, when the layer has a date field.\n- **Buttons:** one primary action in a panel, labeled with a short verb such as \"Inspect\" or \"Assign\".\n\n## Map\n\nThe network is the subject, so it must remain readable. `gray-vector` and `dark-gray-vector` let the operational layers stand out; use a navigation basemap only when road names and classes are what the reader needs. Show hazards with symbols that differ in shape as well as color, and open on the corridor rather than the whole region. A `legend` widget stays short, with few classes.\n\n## Do's and Don'ts\n\n- Do state each location in words the reader uses, such as a route, a stop or an exit.\n- Do put units and time windows on every figure.\n- Do keep hazard classes the same across the map, charts and lists.\n- Don't fill a header or panel with amber.\n- Don't use amber on the map for anything but what the page marks as a hazard.\n- Don't animate traffic or hazards unless the user asks for it.",
+        "tokens": {
+          "light": {
+            "background": "#f2f1e9",
+            "surface": "#ffffff",
+            "surfaceRaised": "#ecede0",
+            "foreground": "#1e2d2b",
+            "foregroundMuted": "#4c635f",
+            "border": "#ced9d4",
+            "accent": "#a06707",
+            "accentHover": "#885806",
+            "accentActive": "#704805"
+          },
+          "dark": {
+            "background": "#1e1f25",
+            "surface": "#1d2332",
+            "surfaceRaised": "#30343c",
+            "foreground": "#e8eef9",
+            "foregroundMuted": "#a9b5c9",
+            "border": "#34435b",
+            "accent": "#f59e0b",
+            "accentHover": "#f6aa28",
+            "accentActive": "#f7b546"
+          },
+          "typography": {
+            "fontFamily": "Bahnschrift, \"DIN Alternate\", \"Segoe UI\", system-ui, \"Microsoft YaHei\", \"PingFang SC\", sans-serif",
+            "bodySize": 13,
+            "headingSize": 15,
+            "titleSize": 24,
+            "lineHeight": 1.4
+          },
+          "spacing": {
+            "gap": 10,
+            "padding": 16
+          },
+          "radius": 4,
+          "overlay": {
+            "opacity": 0.92,
+            "blur": 10
+          },
+          "chart": {
+            "light": [
+              "#a06707",
+              "#2f6fb5",
+              "#3f8f3f",
+              "#35507a",
+              "#c2417c",
+              "#0f8a84",
+              "#7d55c7",
+              "#5f7694"
+            ],
+            "dark": [
+              "#f59e0b",
+              "#8fa3bf",
+              "#6cbf5c",
+              "#a183e0",
+              "#2fb8ad",
+              "#5b9bea",
+              "#e0699c",
+              "#7fd0ee"
+            ]
+          }
+        }
+      }
+    },
+    "layout": {
+      "right": {
+        "hidden": false,
+        "width": "380px",
+        "title": "Station filter & results",
+        "collapsed": false,
+        "blocks": [
+          {
+            "type": "customMount",
+            "id": "station-filter-results",
+            "title": "Stations"
+          }
+        ]
+      }
+    },
+    "layoutMode": "docked",
+    "widgets": [
+      {
+        "id": "home",
+        "type": "home",
+        "slot": "top-left",
+        "config": {}
+      },
+      {
+        "id": "legend",
+        "type": "legend",
+        "slot": "bottom-left",
+        "config": {}
+      },
+      {
+        "id": "default-layer-list",
+        "type": "layerList",
+        "slot": "top-right",
+        "config": {}
+      },
+      {
+        "id": "default-basemap-gallery",
+        "type": "basemapGallery",
+        "slot": "top-right",
+        "config": {}
+      }
+    ],
+    "interactions": [],
+    "behaviors": [
+      {
+        "id": "station-borough-filter",
+        "label": "Borough station availability filter",
+        "bundlePath": "./runtime/behaviors/station-borough-filter-d47cce3d16db91ff.js",
+        "sourceSha256": "d47cce3d16db91ff1be88b47363f38c52f4f18d4a0dabf08c0afe29405b12638",
+        "modulePaths": [],
+        "config": {
+          "layerId": "file-like:stations-geojson"
+        },
+        "mounts": [
+          "station-filter-results"
+        ],
+        "ownedLayerIds": [],
+        "interactions": [
+          {
+            "id": "station-click",
+            "trigger": {
+              "type": "feature-click",
+              "layerId": "file-like:stations-geojson"
+            },
+            "actionId": "show-station-selection"
+          }
+        ],
+        "installedAt": "2026-11-06T07:57:19.662Z"
+      }
+    ]
+  },
+  "nova": {
+    "basename": "7574c339-1853-4527-a72b-4fb91b6f9e17",
+    "presentationMode": "app",
+    "ownedGraphicsLayerIds": [],
+    "origin": {
+      "portalUrl": "https://www.arcgis.com",
+      "mapId": "output-1c1cb7b8-7800-4f31-9de0-57a4122c057d",
+      "mapName": "New Conversation",
+      "viewMode": "2d",
+      "capturedAt": "2026-11-06T07:56:31.003Z"
+    },
+    "sourceSelection": {
+      "mode": "all"
+    },
+    "unsupportedLayers": [],
+    "degradedFeatures": []
+  }
+}
